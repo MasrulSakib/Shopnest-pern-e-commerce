@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "daisyui/index.js" {
+  themes: pastel, retro, coffee, forest, cyberpunk, synthwave, luxury, autumn, valentine, aqua, business, night, dracula;
+}
+
+@theme {
+  --animate-gradient-x: gradient-x 3s ease infinite;
+
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+}
