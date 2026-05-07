@@ -1,75 +1,71 @@
-# React + TypeScript + Vite
+# ShopNest Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend of the ShopNest E-commerce platform is a modern, high-performance web application built with React and TypeScript. It leverages Vite for optimized development and production builds, providing a seamless user experience for product management.
 
-Currently, two official plugins are available:
+## Technology Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application utilizes a curated selection of modern technologies to ensure scalability, maintainability, and performance:
 
-## React Compiler
+*   **Core Library**: React 19
+*   **Build Tool**: Vite 6
+*   **State Management**: Zustand
+*   **Routing**: React Router 7
+*   **Styling**: Tailwind CSS 4 with DaisyUI
+*   **Icons**: Lucide React
+*   **Type Safety**: TypeScript 6
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Key Features
 
-Note: This will impact Vite dev & build performances.
+*   **Dynamic Product Catalog**: Real-time listing of available products fetched from the backend API.
+*   **Product Management**: Comprehensive CRUD operations including adding new products, updating existing details, and deletion.
+*   **State Management**: Centralized store for managing product data and theme states using Zustand.
+*   **Responsive Design**: Mobile-first architecture ensured through Tailwind CSS and glassmorphism UI elements.
+*   **Theming**: Integrated theme selector with persistent state management.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+*   Node.js (latest LTS recommended)
+*   npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+In the frontend directory, you can run:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+*   `npm run dev`: Runs the app in development mode with HMR.
+*   `npm run build`: Builds the application for production to the `dist` folder.
+*   `npm run lint`: Runs ESLint to identify and report on patterns found in ECMAScript/JavaScript code.
+*   `npm run preview`: Locally previews the production build.
+
+## Environment Variables
+
+The application expects the following environment variables if configured in the store:
+
+*   `VITE_API_BASE_URL`: The base URL for the backend API (defaults to localhost:3000 in development).
+
+## Project Structure
+
+```text
+src/
+├── components/     # Reusable UI components
+├── pages/          # Page-level components
+├── store/          # Zustand state management and types
+├── assets/         # Static assets and global styles
+└── main.tsx        # Application entry point
 ```
