@@ -1,71 +1,107 @@
-# ShopNest Frontend
+# ShopNest PERN E-commerce
 
-The frontend of the ShopNest E-commerce platform is a modern, high-performance web application built with React and TypeScript. It leverages Vite for optimized development and production builds, providing a seamless user experience for product management.
+ShopNest is a full-stack e-commerce solution built using the PERN stack (PostgreSQL, Express, React, and Node.js). The application provides a robust platform for product management, featuring a secured backend API and a high-performance frontend interface.
+
+## Architecture Overview
+
+The project is structured as a monorepo with a clear separation between the server-side logic and the client-side interface:
+
+*   **Backend**: An Express.js REST API secured with Arcjet, connected to a PostgreSQL database via Neon.
+*   **Frontend**: A modern React application optimized with Vite and styled with Tailwind CSS.
 
 ## Technology Stack
 
-The application utilizes a curated selection of modern technologies to ensure scalability, maintainability, and performance:
+### Backend
+*   **Runtime**: Node.js
+*   **Framework**: Express 5
+*   **Database**: PostgreSQL (via Neon Database)
+*   **Security**: Arcjet (Rate limiting, Bot detection)
+*   **Logging**: Morgan
+*   **Middleware**: Helmet, CORS, JSON Parser
 
-*   **Core Library**: React 19
+### Frontend
+*   **Library**: React 19
 *   **Build Tool**: Vite 6
 *   **State Management**: Zustand
-*   **Routing**: React Router 7
-*   **Styling**: Tailwind CSS 4 with DaisyUI
+*   **Styling**: Tailwind CSS 4, DaisyUI
 *   **Icons**: Lucide React
-*   **Type Safety**: TypeScript 6
+*   **Routing**: React Router 7
 
 ## Key Features
 
-*   **Dynamic Product Catalog**: Real-time listing of available products fetched from the backend API.
-*   **Product Management**: Comprehensive CRUD operations including adding new products, updating existing details, and deletion.
-*   **State Management**: Centralized store for managing product data and theme states using Zustand.
-*   **Responsive Design**: Mobile-first architecture ensured through Tailwind CSS and glassmorphism UI elements.
-*   **Theming**: Integrated theme selector with persistent state management.
+*   **Unified Product Management**: Full CRUD operations for products with persistent database storage.
+*   **Enterprise Security**: Integrated Arcjet protection for rate-limiting, bot detection, and spoofed bot prevention.
+*   **Modern State Management**: Global state handling via Zustand for a reactive and efficient UI.
+*   **Production-Ready Build**: Automated build scripts that compile the frontend and serve it via the Express backend in production.
+*   **Database Automation**: Automatic table initialization and seeding support.
 
 ## Getting Started
 
 ### Prerequisites
+*   Node.js (latest LTS)
+*   npm
+*   PostgreSQL database (Neon Database recommended)
 
-*   Node.js (latest LTS recommended)
-*   npm or yarn
+### Environment Setup
+
+Create a `.env` file in the root directory and configure the following variables:
+
+```env
+PORT=3000
+DATABASE_URL=your_postgresql_connection_string
+ARCJET_KEY=your_arcjet_api_key
+NODE_ENV=development
+```
 
 ### Installation
 
-1. Navigate to the frontend directory:
-    ```bash
-    cd frontend
-    ```
-2. Install dependencies:
+1. Install root and backend dependencies:
     ```bash
     npm install
     ```
-3. Start the development server:
+2. Install frontend dependencies:
     ```bash
-    npm run dev
+    npm install --prefix frontend
     ```
 
-## Available Scripts
+### Development
 
-In the frontend directory, you can run:
+To run the full-stack application in development mode:
 
-*   `npm run dev`: Runs the app in development mode with HMR.
-*   `npm run build`: Builds the application for production to the `dist` folder.
-*   `npm run lint`: Runs ESLint to identify and report on patterns found in ECMAScript/JavaScript code.
-*   `npm run preview`: Locally previews the production build.
+```bash
+npm run dev
+```
 
-## Environment Variables
+The backend will start on port 3000, and the frontend will be accessible via Vite's development server.
 
-The application expects the following environment variables if configured in the store:
+## Production and Deployment
 
-*   `VITE_API_BASE_URL`: The base URL for the backend API (defaults to localhost:3000 in development).
+### Building for Production
+
+The project includes a unified build command that installs all dependencies (including dev tools for TypeScript) and builds the frontend assets:
+
+```bash
+npm run build
+```
+
+### Starting the Server
+
+In production, the application serves the compiled React assets directly from the backend:
+
+```bash
+npm start
+```
 
 ## Project Structure
 
 ```text
-src/
-├── components/     # Reusable UI components
-├── pages/          # Page-level components
-├── store/          # Zustand state management and types
-├── assets/         # Static assets and global styles
-└── main.tsx        # Application entry point
+├── backend/            # Express application logic
+│   ├── config/         # Database and third-party configurations
+│   ├── controller/     # Request handlers
+│   ├── routes/         # API route definitions
+│   └── server.ts       # Application entry point
+├── frontend/           # React application
+│   ├── src/            # Components, hooks, and stores
+│   └── vite.config.ts  # Vite configuration
+└── package.json        # Root workspace configuration
 ```
