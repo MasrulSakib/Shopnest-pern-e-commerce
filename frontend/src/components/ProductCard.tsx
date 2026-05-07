@@ -1,8 +1,10 @@
 import { EditIcon, Trash2Icon, ExternalLinkIcon } from "lucide-react";
-import type { Product } from "../type.interface";
+import type { Product } from "../store/type.interface";
 import { Link } from "react-router-dom";
+import { useProductStore } from "../store/useProductStore";
 
 export default function ProductCard({ product }: { product: Product }) {
+    const { deleteProduct } = useProductStore();
     return (
         <div className="group relative overflow-hidden rounded-3xl bg-base-100/40 backdrop-blur-xl border border-base-content/5 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
 
@@ -29,6 +31,7 @@ export default function ProductCard({ product }: { product: Product }) {
                     <button
                         className="btn btn-circle btn-sm btn-glass hover:btn-error border-none shadow-lg"
                         title="Delete Product"
+                        onClick={() => deleteProduct(product.id)}
                     >
                         <Trash2Icon className="size-4" />
                     </button>

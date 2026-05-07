@@ -1,3 +1,4 @@
+import React from "react";
 export interface Product {
   id: number;
   name: string;
@@ -11,6 +12,24 @@ export interface ProductState {
   loading: boolean;
   error: string | null;
   fetchProducts: () => Promise<void>;
+  deleteProduct: (id: number) => Promise<void>;
+  formData: {
+    name: string;
+    price: string;
+    image: string;
+  };
+  setFormData: (formData: {
+    name: string;
+    price: string;
+    image: string;
+  }) => void;
+
+  resetFormData: () => void;
+  addProduct: (e: React.SubmitEvent<HTMLFormElement>) => Promise<void>;
+
+  currentProduct: Product | null;
+  fetchProduct: (id: number) => Promise<void>;
+  updateProduct: (id: number) => Promise<void>;
 }
 
 export interface ThemeState {

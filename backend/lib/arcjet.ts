@@ -19,9 +19,9 @@ export const aj = arcjet({
     }),
     tokenBucket({
       mode: "LIVE",
-      refillRate: 5, // number of tokens added to the bucket per second
-      interval: 10, // interval in milliseconds for refilling the bucket
-      capacity: 10, // maximum number of tokens in the bucket
+      refillRate: 30, // number of tokens added to the bucket per second
+      interval: 5, // interval in milliseconds for refilling the bucket
+      capacity: 20, // maximum number of tokens in the bucket
     }),
   ],
 });
