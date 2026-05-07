@@ -5,7 +5,7 @@
   "main": "backend/server.ts",
   "scripts": {
     "dev": "nodemon backend/server.ts",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "npm install --include=dev && npm install --include=dev --prefix frontend && npm run build --prefix frontend",
     "start": "node backend/server.ts"
   },
   "keywords": [],

@@ -2,9 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import { ShoppingBagIcon } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
+import { useProductStore } from "../store/useProductStore";
 
 export default function Navbar() {
     const { pathname } = useLocation()
+    const { products } = useProductStore()
     const isHomePage = pathname === "/"
     return (
         <div className="bg-base-100/80 backdrop-blur-lg border-b border-base-content/10 sticky top-0 z-50">
@@ -23,7 +25,7 @@ export default function Navbar() {
                             <div className="indicator">
                                 <div className="p-2 rounded-full hover:bd-base-200 transition-colors">
                                     <ShoppingBagIcon className="size-5" />
-                                    <span className="badge badge-sm badge-primary indicator-item">8</span>
+                                    <span className="badge badge-sm badge-primary indicator-item">{products.length}</span>
                                 </div>
                             </div>
                         )}
